@@ -6,7 +6,9 @@
     <data>
         <instance id="visitDc"
                   class="com.company.clinic.entity.Visit">
-            <view extends="visit-view"/>
+            <view extends="visit-view">
+                <property name="number"/>
+            </view>
             <loader/>
             <collection id="consumablesDc" property="consumables"/>
         </instance>
@@ -16,6 +18,7 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="visitDc">
             <column width="350px">
+                <textField id="numberField" property="number"/>
                 <pickerField id="petField" property="pet">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>

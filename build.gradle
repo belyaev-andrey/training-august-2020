@@ -106,6 +106,14 @@ configure(coreModule) {
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
     }
+    task createDb_analytics(dependsOn: assembleDbScripts, description: 'Creates additional database - Analytics', type: CubaDbCreation) {
+        storeName = 'Analytics'
+    }
+    task updateDb_analytics(dependsOn: assembleDbScripts, description: 'Updates additional database - Analytics', type: CubaDbUpdate) {
+        storeName = 'Analytics'
+    }
+    task createAllDb(dependsOn: [createDb, createDb_analytics])
+    task updateAllDb(dependsOn: [updateDb, updateDb_analytics])
 }
 
 configure(webModule) {

@@ -9,5 +9,6 @@
         <item screen="clinic_PetType.browse" caption="mainMsg://menu_config.clinic_PetType.browse"/>
         <item screen="clinic_Consumable.browse" caption="mainMsg://menu_config.clinic_Consumable.browse"/>
         <item screen="clinic_UsedConsumables" caption="mainMsg://menu_config.clinic_UsedConsumables"/>
+        <item screen="clinic_VisitAnalysis.browse" caption="mainMsg://menu_config.clinic_VisitAnalysis.browse"/>
     </menu>
 </menu-config>

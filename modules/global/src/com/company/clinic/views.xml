@@ -19,4 +19,11 @@
         </property>
         <property name="consumables" view="_local"/>
     </view>
+    <view entity="clinic_Visit" name="visit-owner-view" extends="_local">
+        <property name="pet" view="_minimal">
+            <property name="owner" view="_minimal">
+                <property name="email"/>
+            </property>
+        </property>
+    </view>
 </views>

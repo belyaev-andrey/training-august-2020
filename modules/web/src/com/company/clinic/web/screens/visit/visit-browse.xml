@@ -7,7 +7,9 @@
     <data readOnly="true">
         <collection id="visitsDc"
                     class="com.company.clinic.entity.Visit">
-            <view extends="visit-browse"/>
+            <view extends="visit-browse">
+                <property name="number"/>
+            </view>
             <loader id="visitsDl">
                 <query>
                     <![CDATA[select e from clinic_Visit e]]>
@@ -34,6 +36,7 @@
                 <action id="refresh" caption="msg://refresh" icon="REFRESH"/>
             </actions>
             <columns>
+                <column id="number"/>
                 <column id="pet"/>
                 <column id="veterinarian"/>
                 <column id="date"/>

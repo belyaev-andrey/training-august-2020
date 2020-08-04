@@ -7,22 +7,48 @@
             <view extends="_local"/>
             <loader id="consumablesDl"/>
         </collection>
+        <collection id="drugsDc" class="com.company.clinic.entity.Drug">
+            <view extends="_local">
+                <property name="name"/>
+                <property name="price"/>
+            </view>
+            <loader id="drugsDl"/>
+        </collection>
     </data>
     <layout>
-        <table id="consumablesTable" height="100%" width="100%" dataContainer="consumablesDc">
-            <actions>
-                <action id="excel" type="excel"/>
-                <action id="refresh" type="refresh"/>
-            </actions>
-            <buttonsPanel alwaysVisible="true">
-                <button id="consumablesTableExcelBtn" action="consumablesTable.excel"/>
-                <button id="consumablesTableRefreshBtn" action="consumablesTable.refresh"/>
-            </buttonsPanel>
-            <columns>
-                <column id="title"/>
-                <column id="description"/>
-                <column id="price"/>
-            </columns>
-        </table>
+        <vbox expand="drugsTable" height="100%" spacing="true">
+            <table id="consumablesTable" height="300px" width="100%" dataContainer="consumablesDc">
+                <actions>
+                    <action id="excel" type="excel"/>
+                    <action id="refresh" type="refresh"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="consumablesTableExcelBtn" action="consumablesTable.excel"/>
+                    <button id="consumablesTableRefreshBtn" action="consumablesTable.refresh"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="title"/>
+                    <column id="description"/>
+                    <column id="price"/>
+                </columns>
+            </table>
+            <table id="drugsTable" width="100%" dataContainer="drugsDc">
+                <actions>
+                    <action id="addDrag" icon="font-icon:PLUS" caption="msg://add.drug"/>
+                    <action id="excel" type="excel"/>
+                    <action id="refresh" type="refresh"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="drugAddBtn" action="drugsTable.addDrag"/>
+                    <button id="drugsTableExcelBtn" action="drugsTable.excel"/>
+                    <button id="drugsTableRefreshBtn" action="drugsTable.refresh"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="name"/>
+                    <column id="price"/>
+                </columns>
+                <rowsCount/>
+            </table>
+        </vbox>
     </layout>
 </window>
