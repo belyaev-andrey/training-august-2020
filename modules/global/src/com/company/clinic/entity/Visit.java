@@ -1,5 +1,6 @@
 package com.company.clinic.entity;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Listeners;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @PublishEntityChangedEvents
@@ -56,6 +58,25 @@ public class Visit extends StandardEntity {
             inverseJoinColumns = @JoinColumn(name = "CONSUMABLE_ID"))
     @ManyToMany
     private List<Consumable> consumables;
+
+    @Transient
+    @MetaProperty(related = {"date", "pet"})
+    public String getCaption() {
+        if (getPet() == null || getDate() == null) {
+            return "Visit is not completed";
+        }
+        return String.format("Visit for %s (%s)", getPet().getName(), getDate());
+    }
+
+    @Transient
+    @MetaProperty(related = {"date", "hoursSpent"})
+    public LocalDateTime getEndDate() {
+        if (getDate() == null) {
+            return null;
+        }
+
+        return getDate().plus(getHoursSpent(), ChronoUnit.HOURS);
+    }
 
     public Long getNumber() {
         return number;

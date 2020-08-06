@@ -8,7 +8,7 @@
         <collection id="petTypesDc"
                     class="com.company.clinic.entity.PetType">
             <view extends="_local"/>
-            <loader id="petTypesDl">
+            <loader id="petTypesDl" >
                 <query>
                     <![CDATA[select e from clinic_PetType e]]>
                 </query>
@@ -31,6 +31,8 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="excel" type="excel"/>
+                <action id="greet" caption="msg://greet" icon="HANDSHAKE_O" trackSelection="true"/>
             </actions>
             <columns>
                 <column id="name"/>
@@ -41,6 +43,8 @@
                 <button id="createBtn" action="petTypesTable.create"/>
                 <button id="editBtn" action="petTypesTable.edit"/>
                 <button id="removeBtn" action="petTypesTable.remove"/>
+                <button id="petTypesTableExcelBtn" action="petTypesTable.excel"/>
+                <button id="greetBtn" action="petTypesTable.greet"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

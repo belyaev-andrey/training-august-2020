@@ -13,8 +13,8 @@
             <collection id="consumablesDc" property="consumables"/>
         </instance>
     </data>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="auto"
+                width="auto"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="visitDc">
             <column width="350px">

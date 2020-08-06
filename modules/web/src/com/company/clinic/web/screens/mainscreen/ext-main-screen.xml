@@ -1,5 +1,33 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="mainMsg://application.caption">
+    <data>
+        <collection id="petsDc" class="com.company.clinic.entity.Pet">
+            <view extends="_local">
+                <property name="type" view="_minimal"/>
+                <property name="owner" view="_minimal"/>
+            </view>
+            <loader id="petsDl">
+                <query>
+                    <![CDATA[select e from clinic_Pet e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="visitsDc" class="com.company.clinic.entity.Visit" view="visit-browse">
+            <loader id="visitsDl">
+                <query>
+                    <![CDATA[select e from clinic_Visit e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <actions>
+        <action id="schedule" caption="msg://scheduleAction.caption" icon="CALENDAR_PLUS_O"/>
+        <action id="refresh" caption="msg://refreshAction.caption" icon="REFRESH"/>
+    </actions>
+    <facets>
+        <editorScreen id="visitEditor" entityClass="com.company.clinic.entity.Visit"
+                      openMode="DIALOG" screenClass="com.company.clinic.web.screens.visit.VisitEdit" editMode="EDIT"/>
+    </facets>
     <layout>
         <cssLayout id="horizontalWrap"
                    stylename="c-sidemenu-layout"
@@ -52,8 +80,25 @@
             <workArea id="workArea"
                       stylename="c-workarea"
                       height="100%">
-                <initialLayout spacing="true" margin="true">
-                    <label id="welcomeLabel" value="mainMsg://application.welcomeText"/>
+                <initialLayout expand="mainBox">
+                    <vbox id="mainBox" expand="scheduleCalendar">
+                        <hbox id="toolBox" width="100%" margin="true" spacing="true">
+                            <form id="scheduleVisitForm" width="400px" align="MIDDLE_CENTER">
+                                <lookupField id="petSelector" caption="msg://petSelector.caption" width="100%"
+                                             optionsContainer="petsDc"/>
+                                <dateField id="dateSelector" caption="msg://dateSelector.caption" width="100%"
+                                           datatype="localDateTime"/>
+                                <buttonsPanel width="100%">
+                                    <button id="scheduleBtn" action="schedule"/>
+                                    <button id="refreshBtn" action="refresh"/>
+                                </buttonsPanel>
+                            </form>
+                            <label id="welcomeLabel" value="mainMsg://application.welcomeText" align="MIDDLE_CENTER"/>
+                        </hbox>
+                        <calendar id="scheduleCalendar" width="100%" dataContainer="visitsDc"
+                                  captionProperty="caption" startDateProperty="date" descriptionProperty="description"
+                                  endDateProperty="endDate"/>
+                    </vbox>
                 </initialLayout>
             </workArea>
         </cssLayout>
