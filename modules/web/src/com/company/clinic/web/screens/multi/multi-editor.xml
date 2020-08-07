@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://multiEditor.caption"
+        messagesPack="com.company.clinic.web.screens.multi">
+    <data>
+        <instance id="petTypeDc" class="com.company.clinic.entity.PetType">
+            <view extends="_local"/>
+            <loader id="petTypeDl"/>
+        </instance>
+        <instance id="ownerDc" class="com.company.clinic.entity.Owner">
+            <view extends="_local"/>
+            <loader id="ownerDl"/>
+        </instance>
+    </data>
+    <actions>
+        <action id="createNew" caption="msg://create" icon="font-icon:PLUS"/>
+        <action id="save" caption="msg://save" icon="font-icon:SAVE"/>
+    </actions>
+    <layout>
+        <hbox>
+            <groupBox caption="msg://multiEditor.pet.type.caption">
+                <form id="petTypeForm" dataContainer="petTypeDc">
+                <column width="350px">
+                    <textField id="nameField" property="name"/>
+                </column>
+            </form>
+            </groupBox>
+            <groupBox caption="msg://multiEditor.owner.caption">
+                <form id="ownerForm" dataContainer="ownerDc">
+                    <column width="350px">
+                        <textField id="ownerNameField" property="name"/>
+                        <textField id="phoneNumberField" property="phoneNumber"/>
+                        <textField id="emailField" property="email"/>
+                    </column>
+                </form>
+            </groupBox>
+        </hbox>
+        <buttonsPanel>
+            <button id="createBtn" action="createNew"/>
+            <button id="saveBtn" action="save"/>
+        </buttonsPanel>
+
+    </layout>
+</window>

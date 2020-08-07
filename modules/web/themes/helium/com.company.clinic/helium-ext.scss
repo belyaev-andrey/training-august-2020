@@ -1,0 +1,19 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_company_clinic-helium-ext {
+
+  /* Basic */
+--error-color: #FF0C33;
+--primary-color: #3F42FF;
+--primary-color_rgb: 63, 66, 255;
+--warning-color: #FDFF38;
+
+  /* Common */
+--error-color-shade-1: #EB0027;
+--error-color-shade-2: #D10023;
+--error-dim-color: #FF526F;
+--primary-color-shade-1: #1A1DFF;
+--primary-color-shade-2: #0004FA;
+--primary-dim-color: #7578FF;
+
+
+}

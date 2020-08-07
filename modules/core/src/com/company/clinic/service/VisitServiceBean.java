@@ -4,9 +4,12 @@ import com.company.clinic.entity.Consumable;
 import com.company.clinic.entity.Pet;
 import com.company.clinic.entity.Veterinarian;
 import com.company.clinic.entity.Visit;
+import com.haulmont.cuba.core.Persistence;
+import com.haulmont.cuba.core.Transaction;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.security.entity.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
@@ -19,6 +22,7 @@ public class VisitServiceBean implements VisitService {
     private DataManager dataManager;
 
     @Override
+    @Transactional
     public Visit scheduleVisit(Pet pet, LocalDateTime visitDate, User user) {
         Visit visit = dataManager.create(Visit.class);
         visit.setDate(visitDate);

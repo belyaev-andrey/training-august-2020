@@ -15,16 +15,19 @@
             <loader id="drugsDl"/>
         </collection>
     </data>
+    <dialogMode width="800" height="600" closeable="true"/>
     <layout>
         <vbox expand="drugsTable" height="100%" spacing="true">
             <table id="consumablesTable" height="300px" width="100%" dataContainer="consumablesDc">
                 <actions>
                     <action id="excel" type="excel"/>
                     <action id="refresh" type="refresh"/>
+                    <action id="runPriceListReport" icon="DOLLAR" caption="msg://show.prices"/>
                 </actions>
                 <buttonsPanel alwaysVisible="true">
                     <button id="consumablesTableExcelBtn" action="consumablesTable.excel"/>
                     <button id="consumablesTableRefreshBtn" action="consumablesTable.refresh"/>
+                    <button id="consumablesTableRunPriceListReportBtn" action="consumablesTable.runPriceListReport"/>
                 </buttonsPanel>
                 <columns>
                     <column id="title"/>

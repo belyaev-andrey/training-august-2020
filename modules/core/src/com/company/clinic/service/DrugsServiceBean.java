@@ -3,6 +3,7 @@ package com.company.clinic.service;
 import com.company.clinic.entity.Drug;
 import com.haulmont.cuba.core.global.DataManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ public class DrugsServiceBean implements DrugsService {
     protected DataManager dataManager;
 
     @Override
+    @Transactional
     public List<Drug> getDrugList() {
 
         //Fetching external data

@@ -26,4 +26,29 @@
             </property>
         </property>
     </view>
+    <view entity="report$Report" name="report-run" extends="_local">
+        <property name="group" view="_minimal"/>
+        <property name="defaultTemplate" view="_minimal">
+            <property name="reportOutputType"/>
+            <property name="groovy"/>
+            <property name="customDefinedBy"/>
+            <property name="outputNamePattern"/>
+            <property name="content"/>
+        </property>
+        <property name="templates" view="_minimal">
+            <property name="reportOutputType"/>
+            <property name="groovy"/>
+            <property name="customDefinedBy"/>
+            <property name="outputNamePattern"/>
+            <property name="content"/>
+        </property>
+        <property name="rootBandDefinition" view="_minimal"/>
+        <property name="bands" view="_minimal"/>
+        <property name="inputParameters" view="_minimal"/>
+        <property name="valuesFormats" view="_minimal"/>
+        <property name="reportScreens" view="_minimal"/>
+        <property name="roles" view="_minimal"/>
+        <property name="validationScript"/>
+        <property name="validationOn"/>
+    </view>
 </views>
