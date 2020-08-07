@@ -3,13 +3,10 @@
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://visitBrowse.caption"
         focusComponent="visitsTable"
-        messagesPack="com.company.clinic.web.screens.visit">
+        messagesPack="com.company.clinic.web.screens.visit" xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
     <data readOnly="true">
         <collection id="visitsDc"
-                    class="com.company.clinic.entity.Visit">
-            <view extends="visit-browse">
-                <property name="number"/>
-            </view>
+                    class="com.company.clinic.entity.Visit" view="visit-browse">
             <loader id="visitsDl">
                 <query>
                     <![CDATA[select e from clinic_Visit e]]>
@@ -21,6 +18,23 @@
                 width="800"/>
     <layout expand="visitsTable"
             spacing="true">
+        <chart:pivotTable id="visitsPivotTable" width="100%" dataContainer="visitsDc" renderer="HEATMAP"
+        >
+            <chart:properties>
+                <chart:property name="amount"/>
+                <chart:property name="date"/>
+                <chart:property name="veterinarian"/>
+            </chart:properties>
+            <chart:columns>
+                <chart:column value="date"/>
+            </chart:columns>
+            <chart:rows>
+                <chart:row value="veterinarian"/>
+            </chart:rows>
+            <chart:aggregation mode="SUM">
+                <chart:property name="amount"/>
+            </chart:aggregation>
+        </chart:pivotTable>
         <filter id="filter"
                 applyTo="visitsTable"
                 dataLoader="visitsDl">
@@ -34,6 +48,8 @@
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
                 <action id="refresh" caption="msg://refresh" icon="REFRESH"/>
+                <action id="showConsumables" caption="msg://show.consumables" icon="font-icon:SHOPPING_BASKET"/>
+                <action id="listPrintForm" type="listPrintForm"/>
             </actions>
             <columns>
                 <column id="number"/>
@@ -51,6 +67,10 @@
                 <button id="editBtn" action="visitsTable.edit"/>
                 <button id="removeBtn" action="visitsTable.remove"/>
                 <button id="refreshBtn" action="visitsTable.refresh"/>
+                <dateField id="startDate" datatype="localDateTime" caption="msg://startDate"/>
+                <dateField id="endDate" datatype="localDateTime" caption="msg://endDate"/>
+                <button id="showConsumablesBtn" action="visitsTable.showConsumables"/>
+                <button id="visitsReportBtn" action="visitsTable.listPrintForm"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
