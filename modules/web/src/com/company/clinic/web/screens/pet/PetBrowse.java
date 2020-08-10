@@ -1,5 +1,7 @@
 package com.company.clinic.web.screens.pet;
 
+import com.haulmont.addon.bproc.service.BprocRepositoryService;
+import com.haulmont.addon.bproc.service.BprocRuntimeService;
 import com.haulmont.charts.gui.components.charts.Chart;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.screen.*;
@@ -22,7 +24,5 @@ public class PetBrowse extends StandardLookup<Pet> {
                 .withCaption(event.getDataItemNN().getValue("petName").toString())
                 .show();
     }
-
-
 
 }

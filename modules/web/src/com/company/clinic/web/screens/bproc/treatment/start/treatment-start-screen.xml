@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://treatmentStartScreen.caption"
+        messagesPack="com.company.clinic.web.screens.bproc.treatment.start">
+    <data>
+        <collection id="usersDc" class="com.haulmont.cuba.security.entity.User">
+            <view extends="_local"/>
+            <loader id="usersDl">
+                <query>
+                    <![CDATA[select e from sec$User e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout>
+        <form id="treatmentStartForm">
+            <column width="400px">
+                <lookupField id="nurseField" caption="msg://nurse" optionsContainer="usersDc"/>
+                <textArea id="descriptionField" caption="msg://description"/>
+            </column>
+        </form>
+        <hbox margin="true">
+            <buttonsPanel>
+                <button id="startProcessBtn" caption="msg://startProcess" icon="MEDKIT"/>
+            </buttonsPanel>
+        </hbox>
+    </layout>
+</window>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
-    <menu id="application-clinic" caption="mainMsg://menu_config.application-clinic">
+    <menu id="application-clinic" caption="mainMsg://menu_config.application-clinic" insertBefore="reports">
         <item screen="clinic_Visit.browse" caption="mainMsg://menu_config.clinic_Visit.browse"
               icon="font-icon:CALENDAR_PLUS_O"/>
         <item screen="clinic_Pet.browse" caption="mainMsg://menu_config.clinic_Pet.browse"/>
@@ -11,41 +11,5 @@
         <item screen="clinic_UsedConsumables" caption="mainMsg://menu_config.clinic_UsedConsumables"/>
         <item screen="clinic_VisitAnalysis.browse" caption="mainMsg://menu_config.clinic_VisitAnalysis.browse"/>
         <item screen="clinic_MultiEditor" caption="mainMsg://menu_config.clinic_MultiEditor"/>
-    </menu>
-    <menu id="reports" insertAfter="application-clinic">
-        <item id="report$Report.browse"/>
-        <item id="report$ReportGroup.browse"/>
-        <item id="report$Report.run"/>
-        <item id="report$showChart"/>
-        <item id="report$showReportTable"/>
-        <item id="report$showPivotTable"/>
-    </menu>
-    <menu id="administration">
-        <item id="sec$User.browse"/>
-        <item id="sec$Group.browse"/>
-        <item id="sec$Role.browse"/>
-        <separator/>
-        <item id="sys$Category.browse"/>
-        <item id="sec$UserSessionEntity.browse"/>
-        <item id="sys$LockInfo.browse"/>
-        <item id="sys$FileDescriptor.browse"/>
-        <item id="sys$ScheduledTask.browse"/>
-        <item id="entityRestore"/>
-        <item id="entityInspector.browse"/>
-        <item id="appProperties"/>
-        <item id="jmxConsole"/>
-        <separator/>
-        <item id="entityLog"/>
-        <item id="sec$SessionLogEntry.browse"/>
-        <item id="sys$SendingMessage.browse"/>
-        <item id="serverLog"/>
-        <item id="performanceStatistics"/>
-    </menu>
-    <menu id="help">
-        <item id="aboutWindow" openType="DIALOG"/>
-        <item class="com.haulmont.cuba.web.app.domain.DomainProvider" id="printDomain"/>
-        <separator/>
-        <item id="settings"/>
-        <item screen="helium_ThemeSettingsScreen"/>
     </menu>
 </menu-config>
